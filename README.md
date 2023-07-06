@@ -10,6 +10,8 @@ Following is the service flow setup for this lab.
 1. Docker installed
 2. Java installed
 
+Note that this will be using upstream otel collector instead of splunk otel collector. 
+
 ## Part 1 - Setting up Solace
 Step 1: Clone the solace repository on your machine
 ```
@@ -101,4 +103,26 @@ If Docker is running on the same system your browser is running on, you can acce
 After the OpenTelemetry Collector has received a message, you should be able to see the solbroker trace. Once the right service has been selected, select "Find Traces" button.
 
 ![image](https://github.com/cloe-tang/splunk-observability-for-solace/assets/58005106/08647e8f-2232-42c8-a2ad-832c6496b38b)
+
+Step 3: Verify traces are being sent to Splunk Observability APM
+
+Access to Splunk Observability under APM. Click on explore to view Service Map. You should see solbroker as a service
+
+![image](https://github.com/cloe-tang/splunk-observability-for-solace/assets/58005106/3981928b-14a0-4735-87d5-08c9928d7162)
+
+You can also verify from the otel collector logs by issuing the following command:
+
+```
+docker ps
+```
+
+![image](https://github.com/cloe-tang/splunk-observability-for-solace/assets/58005106/b1ff11c4-2c31-413d-9910-d2061c022a3a)
+
+```
+docker logs 97b57b8e9555
+```
+
+![image](https://github.com/cloe-tang/splunk-observability-for-solace/assets/58005106/7d89a7f8-0a47-4627-9384-410ef5310f01)
+
+Above is what you should see in the logs if traces is successfully received by the collector
 
