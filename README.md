@@ -231,3 +231,12 @@ When navigate to the trace ID, you should see the following water fall.
 Click on solbroker, you should see the following information:
 
 ![image](https://github.com/cloe-tang/splunk-observability-for-solace/assets/58005106/d539103a-dcf4-40dc-af93-7b65a087182e)
+
+## Troubleshooting
+1. If you don't see the trace information in the otel collector logs, make sure the verbosity is set to "detailed" (under exporters)  in otel-collector-config.yaml
+```
+exporters:
+  logging:
+    #loglevel: "info"
+    verbosity: detailed   <---
+```
