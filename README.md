@@ -1,1 +1,1 @@
-#splunk-observability-for-solace
+# splunk-observability-for-solace
